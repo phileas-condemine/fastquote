@@ -1,10 +1,30 @@
 "use strict";
+
+let port = process.env.PORT || 3000;
+//let bodyParser = require('body-parser');
 let express=require("express");
 let app=express();
+let routes = require("./routes.js");
 
-app.get("/",function(request,response){
-  response.send("hello World");
+let mongo = require('mongodb');
+let monk = require('monk');
+let db = monk('localhost:27017/price');
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(function(request,response,next){
+    request.db = db;
+    next();
 });
 
+app.get("/price/:age/:postCode",function(request,response){
+  routes.priceMessage(request,response);
+});
 
-app.listen(3000,()=>console.log("example app listening on port 3000"));
+app.get("/hotspot/:increase",function(request,response){
+  routes.adjustPrice(request,response);
+})
+
+
+
+app.listen(port,()=>console.log("example app listening on port "+port));
