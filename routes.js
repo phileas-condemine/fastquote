@@ -8,10 +8,10 @@ exports.priceMessage = function priceMessage(request,response){
     if (error){
       response.status(500).json(error);
     }
-    console.log(results);
     let hotspot = results[results.length-1].increase;
     let postCode = request.params.postCode;
     let age = request.params.age;
+    console.log({age,hotspot,postCode});
     priceHandler.getPrice(postCode,age,hotspot,(price)=>{
      response.status(200).json({
         "status":"OK",
