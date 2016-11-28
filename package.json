@@ -1,9 +1,8 @@
-
 {
   "name": "API_Webinar",
   "description": "Create a simple fast quote API with Express and ES6",
   "scripts": {
-  "start": "node app.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -11,6 +10,7 @@
     "debug": "~2.2.0",
     "express": "~4.14",
     "jade": "~1.11.0",
+    "mongodb": "^2.2.11",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
   },
