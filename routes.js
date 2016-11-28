@@ -8,7 +8,8 @@ exports.priceMessage = function priceMessage(request,response){
     if (error){
       response.status(500).json(error);
     }
-    let hotspot = results[results.length-1].hotspot;
+    console.log(results);
+    let hotspot = results[results.length-1].increase;
     let postCode = request.params.postCode;
     let age = request.params.age;
     priceHandler.getPrice(postCode,age,hotspot,(price)=>{
@@ -27,14 +28,14 @@ exports.adjustPrice=function adjustPrice(request,response){
   let hotspot=parseInt(request.params.increase);
   let collection = request.db.get('hotspot');
   collection.insert({
-      "hotspot" : hotspot
+      "increase" : hotspot
   }, function (error, results) {
     if (error) {
       response.status(501).json(error);
     }
     response.status(201).json({
      "status":"OK",
-     "hotspot":hotspot,
+     "increase":hotspot,
      "message":hotspot+"% increase with success!"
     });
   });

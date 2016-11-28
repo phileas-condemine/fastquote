@@ -8,9 +8,8 @@ let routes = require("./routes.js");
 
 let mongo = require('mongodb');
 let monk = require('monk');
-let db_url = "mongodb://pcondemine:200690@ds01316.mlab.com:1316/hotspot";
-let db = monk(db_url);
-
+let db = monk('mongodb://admin:200690@ds163667.mlab.com:63667/heroku_9pz62mgz');
+  
 //app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({ extended: false }));
 
