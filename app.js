@@ -7,7 +7,6 @@ let app=express();
 let routes = require("./routes.js");
 
 let mongo = require('mongodb');
-let MongoClient = mongodb.MongoClient;
 let monk = require('monk');
 let db_url = "mongodb://pcondemine:200690@ds01316.mlab.com:1316/hotspot";
 let db = monk(db_url);
